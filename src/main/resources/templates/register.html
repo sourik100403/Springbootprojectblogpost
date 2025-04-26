@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head">
+
+<body class="sub_page">
+
+  <div class="hero_area">
+    <div class="bg-box">
+      <img src="images/hero-bg.jpg" alt="">
+    </div>
+    <!-- header section strats -->
+    <header th:replace="fragments/header :: header">
+  </div>
+
+  <!-- book section -->
+  <section class="book_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h4>
+          Register
+        </h4>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            <form action="#"
+            th:action="@{/register}"
+            th:object="${account}"
+            method="post">
+              <div>
+                <input id="email" type="email" th:field="*{email}" class="form-control" placeholder="Email" />
+              </div>
+              <div>
+                <input id="password" type="password" th:field="*{password}" class="form-control" placeholder="Enter your password" />
+              </div>
+              <div>
+                <input id="firstname" type="text" th:field="*{firstname}" class="form-control" placeholder="Enter your FirstName" />
+              </div>
+              <div class="btn_box">
+                <button type="submit">
+                  Register
+                </button>
+              </div>
+            </form>
+          </div>
+      </div>
+    </div>
+  </section>
+  <!-- end book section -->
+
+  <!-- footer section -->
+  <footer th:replace="fragments/footer :: footer">
+  <!-- footer section -->
+
+</body>
+
+</html>
