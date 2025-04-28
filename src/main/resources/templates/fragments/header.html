@@ -41,16 +41,16 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
               <a class="nav-link" href="/admin">Admin</a>
             </li>
           </span>
-          <span sec:authorize="hasAuthority('ACCESS_ADMIN_PANEL')">
+          <!-- <span sec:authorize="hasAuthority('ACCESS_ADMIN_PANEL')">
             <li class="nav-item">
               <a class="nav-link" href="/admin">Admin</a>
             </li>
-          </span>
-          <span sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_EDITOR')">
+          </span> -->
+          <!-- <span sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_EDITOR')">
             <li class="nav-item">
               <a class="nav-link" href="/editor">Editor</a>
             </li>
-          </span>
+          </span> -->
           <span sec:authorize="isAuthenticated()">
             <li class="nav-item">
               <a class="nav-link" href="/logout">Logout</a>
