@@ -37,7 +37,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
           </span>
           <span sec:authorize="isAuthenticated()">
             <li class="nav-item">
-              <a class="nav-link" href="/add_post">Add Post</a>
+              <a class="nav-link" href="posts/add">Add Post</a>
             </li>
           </span>
           
@@ -58,7 +58,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
           </span> -->
           <span sec:authorize="isAuthenticated()">
             <li class="nav-item">
-              <a class="nav-link" href="/logout">Logout</a>
+              <a class="nav-link" th:href="@{/logout}">Logout</a>
             </li>
           </span>
           </ul>

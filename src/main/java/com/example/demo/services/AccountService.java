@@ -51,5 +51,8 @@ public class AccountService implements UserDetailsService{
             account.getPassword(),grantedAuthority  // Or you can provide custom roles
         );
     }
+    public Optional<Account> findOneByEmail(String email){
+        return accountRepository.findByEmailIgnoreCase(email);
+    }
     
 }

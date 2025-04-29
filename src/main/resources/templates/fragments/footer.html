@@ -100,6 +100,18 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
   </script>
   <!-- End Google Map -->
+  <!-- text editor -->
+  <script src="https://cdn.ckeditor.com/4.25.1-lts/standard/ckeditor.js"></script>
+  <!-- CKEditor 5 CDN -->
+  <script src="https://cdn.ckeditor.com/ckeditor5/35.3.2/classic/ckeditor.js"></script>
+  <!-- CKEditor Initialization -->
+<script>
+  ClassicEditor
+      .create(document.querySelector('#editor'))
+      .catch(error => {
+          console.error(error);
+      });
+</script>
   </footer>
 </body>
   <!-- footer section -->

@@ -20,7 +20,7 @@
       <div class="posts">
         <h3><a th:text="${post.title}">Title</a></h3>
         <h5 th:text="'Author : '+${post.account.firstname} + ' | Created at :'+${post.createAt}"></h5> 
-        <p th:text="${post.body}">Body</p>
+        <p th:utext="${post.body}">Body</p>
         <hr color="grey"/>
         <div  sec:authorize="isAuthenticated()" th:if="${isOwner}">
            <a th:href="@{'/edit_post/'+${post.id}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Edit</a>
