@@ -16,7 +16,7 @@ import com.example.demo.models.Post;
 import com.example.demo.services.AccountService;
 import com.example.demo.services.PostService;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 
@@ -81,6 +81,19 @@ public class PostController {
         postService.Save(post);
         return "redirect:/posts/"+post.getId();
     }
-    
+    @GetMapping("/posts/{id}/edit")
+    @PreAuthorize("isAuthenticated()")
+    public String getPostForEdit(@PathVariable Long id,Model model){
+        Optional<Post> optionalPost=postService.getId(id);
+        if(optionalPost.isPresent()){
+            Post post=optionalPost.get();
+            model.addAttribute("post", post);
+            return "post_views/post_edit";
+        }
+        else{
+            return "404";
+        }
+        
+    }
     
 }

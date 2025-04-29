@@ -23,7 +23,7 @@
         <p th:utext="${post.body}">Body</p>
         <hr color="grey"/>
         <div  sec:authorize="isAuthenticated()" th:if="${isOwner}">
-           <a th:href="@{'/edit_post/'+${post.id}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Edit</a>
+           <a th:href="@{'/posts/'+${post.id}+'/edit'}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Edit</a>
         </div>
       </div>
     </div>

@@ -17,13 +17,13 @@
   <section class="food_section layout_padding">
     <div class="container">
       <div class="heading_container">
-        <h3>Add Post</h3>
+        <h3>Edit Post</h3>
       </div>
       <div class="row">
         <div class="col-md-6">
           <div class="form_container">
-            <form
-            th:action="@{/posts/add}"
+            <form 
+            th:action="@{'/posts/{id}/edit' (id=${post.id})}"
             th:object="${post}"
             method="post">
               <div class="form-group">
@@ -34,7 +34,7 @@
                 <textarea id="editor" th:field="*{body}" name="body"/>
               </div>
                 <button type="submit" class="btn btn-primary">
-                  Add Post
+                  Update Post
                 </button>
             </form>
           </div>
