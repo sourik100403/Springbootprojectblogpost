@@ -21,7 +21,7 @@ public class AccountController {
 
         Account account=new Account();
         model.addAttribute("account", account);
-        return "register";
+        return "account_views/register";
     }
     @PostMapping("/register")
     public String register_user(@ModelAttribute Account account){
@@ -31,14 +31,14 @@ public class AccountController {
     
     @GetMapping("/login")
     public String login(Model model){
-        return "login";
+        return "account_views/login";
     }
     @GetMapping("/profile")
     public String profile(Model model){
-        return "profile";
+        return "account_views/profile";
     }
     @GetMapping("/test")
     public String test(Model model){
-        return "test";
+        return "account_views/test";
 }
 }
