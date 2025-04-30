@@ -92,8 +92,23 @@ public class PostController {
         }
         else{
             return "404";
-        }
-        
+        }  
     }
+    @PostMapping("/posts/{id}/edit")
+    @PreAuthorize("isAuthenticated()")
+    public String updatePost(@PathVariable Long id,@ModelAttribute Post post){
+        Optional<Post> optionalPost=postService.getId(id);
+        if(optionalPost.isPresent()){
+           Post existingPost=optionalPost.get();
+           existingPost.setTitle(post.getTitle());
+           existingPost.setBody(post.getBody());
+           postService.Save(existingPost);
+           return "redirect:/posts/"+post.getId();
+        }
+        else{
+            return "404";
+        }  
+    }
+
     
 }
