@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,6 +21,9 @@ import com.example.demo.util.constants.Roles;
 
 @Service
 public class AccountService implements UserDetailsService{
+    @Value("${app.default-photo-path}")
+    private String photo_prefix;
+
     @Autowired
     private AccountRepository accountRepository;
     @Autowired
@@ -29,11 +33,14 @@ public class AccountService implements UserDetailsService{
         if(account.getRole()==null){
             account.setRole(Roles.USER.getRole());
         }
+        if(account.getPhoto()==null){
+            String path=photo_prefix;
+            account.setPhoto(path);
+        }
         return accountRepository.save(account);
     }
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // TODO Auto-generated method stub
         Optional<Account> optionalAccount=accountRepository.findByEmailIgnoreCase(username);
         if (!optionalAccount.isPresent()) {
             throw new UsernameNotFoundException("User not found with email: " + username);

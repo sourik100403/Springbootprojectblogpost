@@ -3749,3 +3749,6 @@ Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/USER/De
 	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
 	... 140 more
+2025-05-02 10:52:46.856433+05:30 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ACCOUNT delete where firstname [*]hsjgjsg"; SQL statement:
+SELECT * FROM ACCOUNT delete where firstname hsjgjsg [42000-232]

@@ -1,5 +1,6 @@
 package com.example.demo.config;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -43,24 +44,37 @@ public class SeedData implements CommandLineRunner {
         account01.setPassword("12345");
         account01.setFirstname("user");
         account01.setLastname("lastname");
+        account01.setGender("Male");
+        account01.setAge(25);
+        account01.setDate_of_birth(LocalDate.of(1999, 1, 1));
 
         account02.setEmail("admin@admin.com");
         account02.setPassword("12345");
         account02.setFirstname("admin");
         account02.setLastname("lastname");
         account02.setRole(Roles.ADMIN.getRole());
+        account02.setGender("Female");
+        account02.setAge(35);
+        account02.setDate_of_birth(LocalDate.of(1989, 2, 15));
 
         account03.setEmail("editor@editor.com");
         account03.setPassword("12345");
         account03.setFirstname("editor");
         account03.setLastname("lastname");
+        account03.setGender("Others");
+        account03.setAge(30);
+        account03.setDate_of_birth(LocalDate.of(1994, 3, 20));
         account03.setRole(Roles.EDITOR.getRole());
 
         account04.setEmail("super_editor@editor.com");
         account04.setPassword("12345");
         account04.setFirstname("supereditor");
         account04.setLastname("lastname");
+        account04.setGender("Female");
+        account04.setAge(40);
+        account04.setDate_of_birth(LocalDate.of(1984, 4, 10));
         account04.setRole(Roles.EDITOR.getRole());
+
         Set<Authority> authorites=new HashSet<>();
         authorityService.findById(Privillages.RESET_ANY_USER_PASSWORD.getId()).ifPresent(authorites::add);
         authorityService.findById(Privillages.ACCESS_ADMIN_PANEL.getId()).ifPresent(authorites::add);
@@ -71,8 +85,6 @@ public class SeedData implements CommandLineRunner {
         accountService.save(account03);
         accountService.save(account04);
 
-
-        // TODO Auto-generated method stub
         List<Post> posts=postService.getAll();
         if(posts.size()==0){
             Post post01=new Post();
