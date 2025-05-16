@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/head :: head">
+<head th:replace="fragments/head :: head"></head>
 
 <body class="sub_page">
 
@@ -10,16 +10,90 @@
       <img src="images/hero-bg.jpg" alt="">
     </div>
     <!-- header section strats -->
-    <header th:replace="fragments/header :: header">
+    <header th:replace="fragments/header :: header"></header>
   </div>
 
   <!-- about section -->
 
-  <section class="about_section layout_padding">
-    <div class="container  ">
-        profile......
-    </div>
-  </section>
+    <!-- book section -->
+    <section class="book_section layout_padding">
+      <div class="container">
+        <div class="heading_container">
+          <h4>
+            Profile
+          </h4>
+          <!-- <img th:src="@{'/' + ${photo}}" class="rounded-circle" style="width:150px;float:left;padding:10px 10px 10px 10px;" alt="Avater"/> -->
+          <!-- <img th:src="@{'/uploads/' + ${photo}}" class="rounded-circle" style="width:150px;float:left;padding:10px 10px 10px 10px;" alt="Avatar" /> -->
+          <img th:src="${photo} != null ? '/uploads/' + ${photo} : '/images/client1.jpg'" 
+     class="rounded-circle" 
+     style="width:150px;float:left;padding:10px 10px 10px 10px;"
+     alt="Avatar" />
+
+          <!-- <img th:src="@{'/' + ${photo}}" class="rounded-circle" style="width:150px;float:left;padding:10px;" alt="Avatar" /> -->
+          <!-- <img th:src="@{'/' + ${photo}}" class="rounded-circle" style="width: 150px; float: left; padding: 10px 10px 10px 18px;" alt="Avatar" /> -->
+          <p th:text="${error}" th:if="${error ne null}" class="alert alert-danger"></p>
+          <form method="post" th:action="@{/update_photo}" enctype="multipart/form-data">
+            <div class="form-group">
+              <input type="file" name="file" class="form-control-file" />
+            </div>
+            <button type="submit" class="btn btn-primary">Update photo</button>
+          </form>
+
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form_container">
+              <form action="#"
+              th:action="@{/profile}"
+              th:object="${account}"
+              method="post">
+                <div>
+                  <input type="hidden" id="id" name="id" th:field="*{id}"/>
+                  <input id="email" name="email" type="email" th:field="*{email}" class="form-control" placeholder="Email" required />
+                  <p th:if="${#fields.hasErrors('email')}" th:error="*{email}" class="alert alert-danger" role="alert">Email Error</p>
+                </div>
+                <div>
+                  <input id="password" type="password" th:field="*{password}" class="form-control" placeholder="Enter your password" required />
+                  <p th:if="${#fields.hasErrors('password')}" th:error="*{password}" class="alert alert-danger" role="alert">password Error</p>
+                </div>
+                <div>
+                  <input id="firstname" type="text" th:field="*{firstname}" class="form-control" placeholder="Enter your FirstName" required/>
+                  <p th:if="${#fields.hasErrors('firstname')}" th:error="*{firstname}" class="alert alert-danger" role="alert">firstname Error</p>
+                </div>
+                <div>
+                  <input id="lastname" type="text" th:field="*{lastname}" class="form-control" placeholder="Enter your Lastname" required/>
+                  <p th:if="${#fields.hasErrors('lastname')}" th:error="*{lastname}" class="alert alert-danger" role="alert">lastname Error</p>
+                </div>
+                <div>
+                  <input id="age" type="number" min="18" max="99" th:field="*{age}" class="form-control" placeholder="Enter your age" required/>
+                  <p th:if="${#fields.hasErrors('age')}" th:error="*{age}" class="alert alert-danger" role="alert">age Error</p>
+                </div>
+                <div>
+                  <input id="date_of_birth" type="date" th:field="*{date_of_birth}" class="form-control" placeholder="Enter your Date of Birth" required/>
+                  <p th:if="${#fields.hasErrors('date_of_birth')}" th:error="*{date_of_birth}" class="alert alert-danger" role="alert">date_of_birth Error</p>
+                </div>
+                <div>
+                  <select id="gender" name="gender" th:field="*{gender}" class="form-control">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+                  </select>
+                  <p th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="alert alert-danger" role="alert">
+                    Gender Error
+                  </p>
+                </div>
+                
+                <div class="btn_box">
+                  <button type="submit">
+                    Update Profile
+                  </button>
+                </div>
+              </form>
+            </div>
+        </div>
+      </div>
+    </section>
+    <!-- end book section -->
 
   <!-- end about section -->
 

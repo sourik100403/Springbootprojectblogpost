@@ -8,5 +8,15 @@
     "name": "app.default-photo-path",
     "type": "java.lang.String",
     "description": "A description for 'app.default-photo-path'"
+  },
+  {
+    "name": "app.upload.relative-path",
+    "type": "java.lang.String",
+    "description": "A description for 'app.upload.relative-path'"
+  },
+  {
+    "name": "spring.mail.smtp.ssl.trust",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.mail.smtp.ssl.trust'"
   }
 ]}

@@ -66,7 +66,8 @@ public class SeedData implements CommandLineRunner {
         account03.setDate_of_birth(LocalDate.of(1994, 3, 20));
         account03.setRole(Roles.EDITOR.getRole());
 
-        account04.setEmail("super_editor@editor.com");
+        // account04.setEmail("super_editor@editor.com");
+        account04.setEmail("sourikparui100403@gmail.com");
         account04.setPassword("12345");
         account04.setFirstname("supereditor");
         account04.setLastname("lastname");
@@ -85,7 +86,7 @@ public class SeedData implements CommandLineRunner {
         accountService.save(account03);
         accountService.save(account04);
 
-        List<Post> posts=postService.getAll();
+        List<Post> posts=postService.findAll();
         if(posts.size()==0){
             Post post01=new Post();
             post01.setTitle("Post 01");

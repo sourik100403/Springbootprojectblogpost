@@ -1,12 +1,14 @@
 package com.example.demo.models;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -59,6 +61,13 @@ public class Account {
     
     @OneToMany(mappedBy = "account")
     private List<Post> posts;
+
+    @Column(name="password_reset_token")
+    private String passwordResetToken;
+
+    private LocalDateTime passwordResetTokenExpiry;
+
+
     @ManyToMany
     @JoinTable(
       name="account_authority",

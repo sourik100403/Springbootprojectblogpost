@@ -61,5 +61,13 @@ public class AccountService implements UserDetailsService{
     public Optional<Account> findOneByEmail(String email){
         return accountRepository.findByEmailIgnoreCase(email);
     }
-    
+    public Optional<Account> findById(long id){
+        return accountRepository.findById(id);    
+    }
+    // public Optional<Account> findByToken(String token){
+    //     return accountRepository.findByToken(token);
+    // }
+    public Optional<Account> findByPasswordResetToken(String token) {
+    return accountRepository.findByPasswordResetToken(token);
+}
 }

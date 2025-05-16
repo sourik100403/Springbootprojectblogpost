@@ -25,7 +25,12 @@ public class WebSecurityConfig {
         "/css/**",
         "/fonts/**",
         "/images/**",
-        "/js/**"
+        "/js/**",
+        "/uploads/**",
+        "/forgot-password",
+        "/reset-password",
+        "/change-password",
+        "/resources/**"
     };
 
      @Bean
@@ -40,6 +45,8 @@ public class WebSecurityConfig {
             .requestMatchers(WHITELIST)
             .permitAll()
             .requestMatchers("/profile/**").authenticated()
+            .requestMatchers("/update_photo/**").authenticated()
+            .requestMatchers("/posts/add/**").authenticated()
             .requestMatchers("/admin/**").hasRole("ADMIN")
             .requestMatchers("/editor/**").hasAnyRole("ADMIN","EDITOR")
             .requestMatchers("/test").hasAuthority("ACCESS_ADMIN_PANEL")
@@ -70,6 +77,11 @@ public class WebSecurityConfig {
             //     .logoutSuccessUrl("/")
             //     .permitAll()
             )
+            .rememberMe(rememberMe -> rememberMe
+            // .key("your-very-secure-secret-key")
+            // .tokenValiditySeconds(7 * 24 * 60 * 60) // 7 days
+            .rememberMeParameter("remember-me")
+        )
             .httpBasic(Customizer.withDefaults()) // 👈 Enables HTTP Basic
 
 
